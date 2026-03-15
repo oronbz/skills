@@ -4,6 +4,10 @@ Personal agent skills for Claude Code and other coding agents.
 
 ## Install
 
+**Quick install:** Use the [Skill Scraper](https://github.com/oronbz/skill-scraper) Chrome extension to browse and install skills directly from this page with one click.
+
+**CLI:**
+
 ```bash
 # Install all skills
 npx skills add oronbz/skills
