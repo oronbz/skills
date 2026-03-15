@@ -6,11 +6,11 @@ Personal agent skills for Claude Code and other coding agents.
 
 ```bash
 # Install all skills
-npx skills add oronb/skills
+npx skills add oronbz/skills
 
 # Install a specific skill
-npx skills add oronb/skills --skill rxswift-concurrency-bridge
-npx skills add oronb/skills --skill gett-push
+npx skills add oronbz/skills --skill rxswift-concurrency-bridge
+npx skills add oronbz/skills --skill gett-push
 ```
 
 ## Available Skills
