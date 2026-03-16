@@ -156,13 +156,22 @@ EOF
 
 Report the PR URL to the user when done.
 
-### Step 7: Update Jira Status
+### Step 7: Update Jira Status & FE Actual Effort
 
 If the Atlassian MCP tools are available and a Jira ticket was provided:
-- Use `getTransitionsForJiraIssue` to find the transition that moves the ticket to **"In Code Review"** (or the closest matching status)
-- Use `transitionJiraIssue` to apply that transition
 
-This happens after the PR is created/updated — the code is now out for review, so the Jira status should reflect that. If the transition fails (e.g., the ticket is already in that status, or the status doesn't exist), just mention it to the user and move on. Don't block the workflow over it.
+1. **Ask for FE Actual Effort** — before transitioning, ask the user: "What's the FE actual effort for this ticket? (in days, e.g. 0.5, 1, 2)". The user can say "skip" to leave it blank.
+
+2. **Set FE Actual Effort** — if the user provided a value, use `editJiraIssue` to set the field:
+   - Field: `customfield_11086` (this is the "FE actual" field)
+   - Value: the numeric value the user provided
+   ```json
+   { "fields": { "customfield_11086": <number> } }
+   ```
+
+3. **Transition to In Code Review** — use `getTransitionsForJiraIssue` to find the transition that moves the ticket to **"In Code Review"** (or the closest matching status), then use `transitionJiraIssue` to apply it.
+
+This happens after the PR is created/updated — the code is now out for review, so the Jira status should reflect that. If the transition or field update fails, just mention it to the user and move on. Don't block the workflow over it.
 
 ## Summary of Conventions
 
